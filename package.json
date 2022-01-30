@@ -1,0 +1,49 @@
+{
+  "name": "mongodb-data-api",
+  "version": "0.1.0",
+  "description": "MongoDB atlas data API SDK for Node.js",
+  "keywords": [
+    "MongoDB data API",
+    "MongoDB cloud data API",
+    "MongoDB Atlas data API SDK"
+  ],
+  "license": "MIT",
+  "author": "Surmon",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/surmon-china/mongodb-data-api.git"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "sideEffects": false,
+  "main": "dist/mongodb-data-api.cjs.js",
+  "module": "dist/mongodb-data-api.esm.js",
+  "types": "dist/mongodb-data-api.esm.d.ts",
+  "scripts": {
+    "lint": "eslint --ext .ts src/**",
+    "format": "prettier --write --parser typescript \"src/**/*.ts\"",
+    "test": "jest",
+    "build": "libundler",
+    "rebirth": "npm run lint && npm run test && npm run build",
+    "release": ". ./scripts/release.sh"
+  },
+  "dependencies": {
+    "axios": "^0.25.0",
+    "mongodb": "^4.0.0"
+  },
+  "devDependencies": {
+    "@surmon-china/libundler": "^1.1.1",
+    "@types/jest": "^27.4.0",
+    "@typescript-eslint/eslint-plugin": "^5.9.1",
+    "@typescript-eslint/parser": "^5.9.1",
+    "eslint": "^8.7.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^27.4.7",
+    "prettier": "^2.5.1",
+    "ts-jest": "^27.1.3",
+    "typescript": "^4.5.4"
+  }
+}
