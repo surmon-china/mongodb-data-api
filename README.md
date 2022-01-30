@@ -1,10 +1,18 @@
 <p align="center">
-  <img src="/logo.svg" height="120px" />
+  <img src="/logo.png" height="120px" />
 </p>
 
 # mongodb-data-api
 
-MongoDB Atlas [Data API](https://docs.atlas.mongodb.com/api/data-api/) SDK for Node.js.
+[![GitHub stars](https://img.shields.io/github/stars/surmon-china/mongodb-data-api.svg?style=for-the-badge)](https://github.com/surmon-china/mongodb-data-api/stargazers)
+&nbsp;
+[![npm](https://img.shields.io/npm/v/mongodb-data-api?color=c7343a&label=npm&style=for-the-badge)](https://www.npmjs.com/package/mongodb-data-api)
+&nbsp;
+[![Test Codecov](https://img.shields.io/codecov/c/github/surmon-china/mongodb-data-api?style=for-the-badge)](https://codecov.io/gh/surmon-china/mongodb-data-api)
+&nbsp;
+[![GitHub license](https://img.shields.io/github/license/surmon-china/mongodb-data-api.svg?style=for-the-badge)](https://github.com/surmon-china/mongodb-data-api/blob/master/LICENSE)
+
+> MongoDB Atlas [Data API](https://docs.atlas.mongodb.com/api/data-api/) SDK for Node.js.
 
 ---
 
