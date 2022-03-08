@@ -24,7 +24,9 @@
   "scripts": {
     "lint": "eslint --ext .ts src/**",
     "format": "prettier --write --parser typescript \"src/**/*.ts\"",
-    "test": "jest",
+    "test": "npm run test:type && npm run test:unit",
+    "test:unit": "jest",
+    "test:type": "tsc -p ./tests-dts/tsconfig.json && tsc -p ./tests-dts/tsconfig.build.json",
     "build": "libundler",
     "rebirth": "npm run lint && npm run test && npm run build",
     "release": ". ./scripts/release.sh"
