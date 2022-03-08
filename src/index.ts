@@ -59,7 +59,7 @@ interface PackEndpointConfig extends BaseConfig {
 
 export type Config = XOR<UrlEndpointConfig, PackEndpointConfig>
 
-export class MongoDBDataAPI<InnerDoc = any> {
+export class MongoDBDataAPI<InnerDoc = Document> {
   #config: Config
   #baseParams: BaseParams
   #axios: AxiosInstance
@@ -112,7 +112,7 @@ export class MongoDBDataAPI<InnerDoc = any> {
    * Execute a API action.
    * @link https://docs.atlas.mongodb.com/api/data-api-resources/
    */
-  public $$action<Result = any>(
+  public $$action<Result = unknown>(
     name: string,
     params: BaseParams = {},
     axiosConfig?: AxiosRequestConfig
