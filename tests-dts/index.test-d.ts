@@ -65,12 +65,9 @@ describe('class base params', async () => {
   expectType<IsAny<typeof result2.document>>(false)
   expectType<{ foo: string } | null>(result2.document)
 
-  // @ts-expect-error
-  expectError(await api.findOne<{ bar: string }>())
-
-  const result3 = await api.findOne<{ foo: string; bar: string }>({ filter: { id: '1' } })
+  const result3 = await api.findOne<{ bar: string }>({ filter: { id: '1' } })
   expectType<IsAny<typeof result3.document>>(false)
-  expectType<{ foo: string } | null>(result3.document)
+  expectType<{ bar: string } | null>(result3.document)
 })
 
 describe('method chaining', async () => {
@@ -87,11 +84,10 @@ describe('method chaining', async () => {
   expectType<IsAny<typeof resultB.document>>(false)
   expectType<{ foo: string } | null>(resultB.document)
 
-  // @ts-expect-error
-  expectError(await collectionC.findOne<{ bar: number }>({ filter: {} }))
-
   const resultC = await collectionC.findOne<{ bar: string; foo: number }>({ filter: {} })
   expectType<IsAny<typeof resultC.document>>(false)
-  expectType<number>(resultC.document.foo)
-  expectType<string>(resultC.document.bar)
+  if (resultC.document) {
+    expectType<number>(resultC.document.foo)
+    expectType<string>(resultC.document.bar)
+  }
 })
