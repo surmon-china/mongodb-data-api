@@ -33,22 +33,22 @@ yarn add mongodb-data-api
 #### Init
 
 ```ts
-import { MongoDBDataAPI, Region } from 'mongodb-data-api'
+import { createMongoDBDataAPI, Region } from 'mongodb-data-api'
 
 // init by URL Endpoint
-const api = new MongoDBDataAPI({
+const api = createMongoDBDataAPI({
   apiKey: '<your_mongodb_api_key>',
   urlEndpoint: 'https://data.mongodb-api.com/app/<your_mongodb_app_id>/endpoint/data/beta'
 })
 
 // or init by app ID
-const api = new MongoDBDataAPI({
+const api = createMongoDBDataAPI({
   apiKey: '<your_mongodb_api_key>',
   appId: '<your_mongodb_app_id>'
 })
 
 // specific region of app
-const api = new MongoDBDataAPI({
+const api = createMongoDBDataAPI({
   apiKey: '<your_mongodb_api_key>',
   appId: '<your_mongodb_app_id>',
   region: Region.Virginia
@@ -126,27 +126,30 @@ api
 #### Method chaining
 
 ```ts
-// api.$cluster
+// select cluster
 const clusterA = api.$cluster('a')
-
-// api.$cluster.$database
+// select database
 const databaseB = clusterA.$database('b')
-const databaseC = clusterA.$database('c')
-
-// api.$cluster.$database.$collection
-const bItemCollection = databaseB.$collection('item')
-const cItemCollection = databaseC.$collection('item')
-
-// actions
-bItemCollection.findOne({ filter: {/*...*/} })
-cItemCollection.insertOne({ document: {/*...*/} })
+// select collection
+const collectionC = databaseB.$collection<C>('c')
+// data actions
+const data = await collectionC.findOne({
+  filter: {
+    /*...*/
+  }
+})
+const result = await collectionC.insertOne({
+  document: {
+    /*...*/
+  }
+})
 
 // -------------
 
 // chaining is equivalent to the api call
-api.$cluster('a').$database('b').$collection('c').findOne({ filter: {} })
+api.$cluster('a').$database('b').$collection<C>('c').findOne({ filter: {} })
 // the same as
-api.findOne({
+api.findOne<C>({
   dataSource: 'a',
   database: 'b',
   collection: 'c',
@@ -165,6 +168,28 @@ api.$$action('findOne', {
   collection: '...',
   filter: {}
 })
+```
+
+#### Original Class
+
+You can use the original Class to implement some special requirements.
+
+```ts
+import { MongoDBDataAPI } from 'mongodb-data-api'
+
+const customerCollection = new MongoDBDataAPI<CustomerDocument>(
+  {
+    apiKey: '<your_mongodb_api_key>',
+    appId: '<your_mongodb_app_id>'
+  },
+  {
+    dataSource: '<target_cluster_name>',
+    database: '<target_database_name>',
+    collection: '<target_collection_name>'
+  }
+)
+
+const customer = await customerCollection.findOne({ ... })
 ```
 
 ### Development

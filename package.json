@@ -1,6 +1,6 @@
 {
   "name": "mongodb-data-api",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "MongoDB atlas data API SDK for Node.js",
   "keywords": [
     "MongoDB data API",
