@@ -2,6 +2,7 @@ import _axios, { AxiosInstance, AxiosRequestConfig } from 'axios'
 import type { Filter, Projection, Sort, UpdateFilter, Document } from 'mongodb'
 
 type AnyKeys<T> = { [P in keyof T]?: T[P] | any }
+type NoInfer<A extends any> = [A][A extends any ? 0 : never]
 type Without<T, U> = { [P in Exclude<keyof T, keyof U>]?: never }
 type XOR<T, U> = T | U extends object ? (Without<T, U> & U) | (Without<U, T> & T) : T | U
 
@@ -157,7 +158,10 @@ export class MongoDBDataAPI<InnerDoc = any> {
    * @link https://docs.atlas.mongodb.com/api/data-api-resources/#find-a-single-document
    */
   public findOne<D = InnerDoc>(
-    params?: ExtendBaseParams<{ filter?: Filter<D>; projection?: Projection<D> }>
+    params?: ExtendBaseParams<{
+      filter?: Filter<NoInfer<D>>
+      projection?: Projection<NoInfer<D>>
+    }>
   ) {
     return this.$$action<{ document: D | null }>('findOne', params)
   }
@@ -168,8 +172,8 @@ export class MongoDBDataAPI<InnerDoc = any> {
    */
   public find<D = InnerDoc>(
     params?: ExtendBaseParams<{
-      filter?: Filter<D>
-      projection?: Projection<D>
+      filter?: Filter<NoInfer<D>>
+      projection?: Projection<NoInfer<D>>
       sort?: Sort
       limit?: number
       skip?: number
@@ -183,7 +187,7 @@ export class MongoDBDataAPI<InnerDoc = any> {
    * @link https://docs.atlas.mongodb.com/api/data-api-resources/#insert-a-single-document
    */
   public insertOne<D = InnerDoc>(
-    params: ExtendBaseParams<{ document: AnyKeys<D> | Document }>
+    params: ExtendBaseParams<{ document: AnyKeys<NoInfer<D>> | Document }>
   ) {
     return this.$$action<{ insertedId: string }>('insertOne', params)
   }
@@ -193,7 +197,7 @@ export class MongoDBDataAPI<InnerDoc = any> {
    * @link https://docs.atlas.mongodb.com/api/data-api-resources/#insert-multiple-documents
    */
   public insertMany<D = InnerDoc>(
-    params: ExtendBaseParams<{ documents: Array<AnyKeys<D> | Document> }>
+    params: ExtendBaseParams<{ documents: Array<AnyKeys<NoInfer<D>> | Document> }>
   ) {
     return this.$$action<{ insertedIds: Array<string> }>('insertMany', params)
   }
@@ -204,8 +208,8 @@ export class MongoDBDataAPI<InnerDoc = any> {
    */
   public updateOne<D = InnerDoc>(
     params: ExtendBaseParams<{
-      filter: Filter<D>
-      update: UpdateFilter<D>
+      filter: Filter<NoInfer<D>>
+      update: UpdateFilter<NoInfer<D>>
       upsert?: boolean
     }>
   ) {
@@ -222,8 +226,8 @@ export class MongoDBDataAPI<InnerDoc = any> {
    */
   public updateMany<D = InnerDoc>(
     params: ExtendBaseParams<{
-      filter: Filter<D>
-      update: UpdateFilter<D>
+      filter: Filter<NoInfer<D>>
+      update: UpdateFilter<NoInfer<D>>
       upsert?: boolean
     }>
   ) {
@@ -240,7 +244,7 @@ export class MongoDBDataAPI<InnerDoc = any> {
    */
   public replaceOne<D = InnerDoc>(
     params: ExtendBaseParams<{
-      filter: Filter<D>
+      filter: Filter<NoInfer<D>>
       replacement: any
       upsert?: boolean
     }>
@@ -256,7 +260,9 @@ export class MongoDBDataAPI<InnerDoc = any> {
    * Delete a Single Document.
    * @link https://docs.atlas.mongodb.com/api/data-api-resources/#delete-a-single-document
    */
-  public deleteOne<D = InnerDoc>(params: ExtendBaseParams<{ filter: Filter<D> }>) {
+  public deleteOne<D = InnerDoc>(
+    params: ExtendBaseParams<{ filter: Filter<NoInfer<D>> }>
+  ) {
     return this.$$action<{ deletedCount: number }>('deleteOne', params)
   }
 
@@ -264,7 +270,9 @@ export class MongoDBDataAPI<InnerDoc = any> {
    * Delete Multiple Documents.
    * @link https://docs.atlas.mongodb.com/api/data-api-resources/#delete-multiple-documents
    */
-  public deleteMany<D = InnerDoc>(params: ExtendBaseParams<{ filter: Filter<D> }>) {
+  public deleteMany<D = InnerDoc>(
+    params: ExtendBaseParams<{ filter: Filter<NoInfer<D>> }>
+  ) {
     return this.$$action<{ deletedCount: number }>('deleteMany', params)
   }
 
