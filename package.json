@@ -36,7 +36,7 @@
     "mongodb": "^4.0.0"
   },
   "devDependencies": {
-    "@surmon-china/libundler": "^1.1.1",
+    "@surmon-china/libundler": "^2.1.0",
     "@types/jest": "^27.4.0",
     "@typescript-eslint/eslint-plugin": "^5.9.1",
     "@typescript-eslint/parser": "^5.9.1",
