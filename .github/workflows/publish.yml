@@ -1,6 +1,6 @@
 # This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
 # For more information see: https://help.github.com/actions/language-and-framework-guides/publishing-nodejs-packages
-# Fork from: https://github.com/actions/starter-workflows/blob/master/ci/npm-publish.yml
+# Fork from: https://github.com/actions/starter-workflows/blob/main/ci/npm-publish.yml
 
 name: Publish
 

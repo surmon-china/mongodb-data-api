@@ -10,7 +10,7 @@
 &nbsp;
 [![Test Codecov](https://img.shields.io/codecov/c/github/surmon-china/mongodb-data-api?style=for-the-badge)](https://codecov.io/gh/surmon-china/mongodb-data-api)
 &nbsp;
-[![GitHub license](https://img.shields.io/github/license/surmon-china/mongodb-data-api.svg?style=for-the-badge)](https://github.com/surmon-china/mongodb-data-api/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/surmon-china/mongodb-data-api.svg?style=for-the-badge)](/LICENSE)
 
 > MongoDB Atlas [Data API](https://docs.atlas.mongodb.com/api/data-api/) SDK for Node.js.
 
@@ -210,8 +210,8 @@ yarn build
 
 ### Changelog
 
-Detailed changes for each release are documented in the [release notes](https://github.com/surmon-china/mongodb-data-api/blob/master/CHANGELOG.md).
+Detailed changes for each release are documented in the [release notes](/CHANGELOG.md).
 
 ### License
 
-[MIT](https://github.com/surmon-china/mongodb-data-api/blob/master/LICENSE)
+[MIT](/LICENSE)
