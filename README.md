@@ -12,7 +12,7 @@
 &nbsp;
 [![GitHub license](https://img.shields.io/github/license/surmon-china/mongodb-data-api.svg?style=for-the-badge)](/LICENSE)
 
-> MongoDB Atlas [Data API](https://docs.atlas.mongodb.com/api/data-api/) SDK for Node.js.
+MongoDB Atlas [Data API](https://docs.atlas.mongodb.com/api/data-api/) SDK for Node.js.
 
 ---
 
