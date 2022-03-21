@@ -1,6 +1,6 @@
 {
   "name": "mongodb-data-api",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "MongoDB atlas data API SDK for Node.js",
   "keywords": [
     "MongoDB data API",
@@ -24,7 +24,9 @@
   "scripts": {
     "lint": "eslint --ext .ts src/**",
     "format": "prettier --write --parser typescript \"src/**/*.ts\"",
-    "test": "jest",
+    "test": "npm run test:type && npm run test:unit",
+    "test:unit": "jest",
+    "test:type": "tsc -p ./tests-dts/tsconfig.json && tsc -p ./tests-dts/tsconfig.build.json",
     "build": "libundler",
     "rebirth": "npm run lint && npm run test && npm run build",
     "release": ". ./scripts/release.sh"
@@ -34,7 +36,7 @@
     "mongodb": "^4.0.0"
   },
   "devDependencies": {
-    "@surmon-china/libundler": "^1.1.1",
+    "@surmon-china/libundler": "^2.2.0",
     "@types/jest": "^27.4.0",
     "@typescript-eslint/eslint-plugin": "^5.9.1",
     "@typescript-eslint/parser": "^5.9.1",

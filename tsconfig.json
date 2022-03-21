@@ -3,16 +3,16 @@
     "module": "esnext",
     "target": "ES6",
     "lib": ["ESNext"],
-    "strict": true,
-    "esModuleInterop": true,
     "moduleResolution": "node",
+    "strict": true,
+    "strictNullChecks": true,
+    "esModuleInterop": true,
     "declaration": true,
-    "skipLibCheck": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "outDir": "dist"
   },
-  "include": ["src/**/*", "test/**/*"],
+  "include": ["src/**/*", "test/**/*", "tests-dts"],
   "exclude": ["node_modules", "dist"]
 }
