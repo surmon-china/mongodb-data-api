@@ -14,8 +14,8 @@
     "url": "https://github.com/surmon-china/mongodb-data-api.git"
   },
   "files": [
-    "dist",
-    "src"
+    "CHANGELOG.md",
+    "dist"
   ],
   "sideEffects": false,
   "main": "dist/mongodb-data-api.cjs.js",
