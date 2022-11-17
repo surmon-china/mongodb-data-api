@@ -288,7 +288,7 @@ export class MongoDBDataAPI<InnerDoc = Document> {
   public aggregate<T extends Array<any>>(
     params: ExtendBaseParams<{ pipeline: Array<Document> }>
   ) {
-    return this.$$action<{ documents: T }>('pipeline', params)
+    return this.$$action<{ documents: T }>('aggregate', params)
   }
 }
 
