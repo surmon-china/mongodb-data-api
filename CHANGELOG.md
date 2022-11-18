@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+### v0.2.1 (2022-11-19)
+
+**Fix**
+
+- [#7 Fix the bug of aggregate url](https://github.com/surmon-china/mongodb-data-api/pull/7)
+
 ### v0.2.0 (2022-03-09)
 
 **Feature**

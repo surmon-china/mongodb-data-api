@@ -1,6 +1,6 @@
 {
   "name": "mongodb-data-api",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "MongoDB atlas data API SDK for Node.js",
   "author": "Surmon",
   "license": "MIT",
