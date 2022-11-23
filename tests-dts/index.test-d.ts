@@ -1,5 +1,5 @@
 import type { Document } from 'mongodb'
-import { createMongoDBDataAPI, MongoDBDataAPI, Region } from '../src'
+import { createMongoDBDataAPI, MongoDBDataAPI } from '../src'
 import {
   describe,
   expectError,
@@ -23,7 +23,7 @@ describe('Class creator', () => {
   // @ts-expect-error
   expectError(new MongoDBDataAPI({ apiKey: '', appId: '', urlEndpoint: '' }))
   // @ts-expect-error
-  expectError(new MongoDBDataAPI({ apiKey: '', appId: '', region: '' }))
+  expectError(new MongoDBDataAPI({ apiKey: '', region: '', cloud: '' }))
 
   // @ts-expect-error
   expectError(createMongoDBDataAPI())
@@ -33,7 +33,7 @@ describe('Class creator', () => {
   expectType<MongoDBDataAPI>(api)
   expectAssignable<MongoDBDataAPI>(api)
 
-  const api2 = new MongoDBDataAPI({ apiKey: '', appId: '', region: Region.Virginia })
+  const api2 = new MongoDBDataAPI({ apiKey: '', appId: '', region: 'us-east-1' })
   expectType<MongoDBDataAPI>(api2)
   expectAssignable<MongoDBDataAPI>(api2)
 })

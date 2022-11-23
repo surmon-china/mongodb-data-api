@@ -2,6 +2,7 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "noEmit": true,
-    "declaration": true
+    "declaration": true,
+    "skipLibCheck": true
   }
 }
