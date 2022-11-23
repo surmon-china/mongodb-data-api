@@ -12,7 +12,7 @@
 &nbsp;
 [![GitHub license](https://img.shields.io/github/license/surmon-china/mongodb-data-api.svg?style=for-the-badge)](/LICENSE)
 
-MongoDB Atlas [Data API](https://docs.atlas.mongodb.com/api/data-api/) SDK for Node.js.
+MongoDB Atlas [Data API](https://www.mongodb.com/docs/atlas/api/data-api/) SDK for Node.js.
 
 ---
 
@@ -33,12 +33,12 @@ yarn add mongodb-data-api
 #### Init
 
 ```ts
-import { createMongoDBDataAPI, Region } from 'mongodb-data-api'
+import { createMongoDBDataAPI } from 'mongodb-data-api'
 
 // init by URL Endpoint
 const api = createMongoDBDataAPI({
   apiKey: '<your_mongodb_api_key>',
-  urlEndpoint: 'https://data.mongodb-api.com/app/<your_mongodb_app_id>/endpoint/data/beta'
+  urlEndpoint: 'https://data.mongodb-api.com/app/<your_mongodb_app_id>/endpoint/data/v1'
 })
 
 // or init by app ID
@@ -47,28 +47,29 @@ const api = createMongoDBDataAPI({
   appId: '<your_mongodb_app_id>'
 })
 
-// specific region of app
+// specific region and cloud of app
 const api = createMongoDBDataAPI({
   apiKey: '<your_mongodb_api_key>',
   appId: '<your_mongodb_app_id>',
-  region: Region.Virginia
+  region: '<your_mongodb_app_region>', // e.g. us-east-1
+  cloud: '<your_mongodb_app_cloud>' // e.g. aws
 })
 ```
 
 #### Actions
 
-See [MongoDB Data API Resources](https://docs.atlas.mongodb.com/api/data-api-resources/).
+See [MongoDB Data API Resources](https://www.mongodb.com/docs/atlas/api/data-api-resources/).
 
-- [`api.findOne`](https://docs.atlas.mongodb.com/api/data-api-resources/#find-a-single-document)
-- [`api.find`](https://docs.atlas.mongodb.com/api/data-api-resources/#find-multiple-documents)
-- [`api.insertOne`](https://docs.atlas.mongodb.com/api/data-api-resources/#insert-a-single-document)
-- [`api.insertMany`](https://docs.atlas.mongodb.com/api/data-api-resources/#insert-multiple-documents)
-- [`api.updateOne`](https://docs.atlas.mongodb.com/api/data-api-resources/#update-a-single-document)
-- [`api.updateMany`](https://docs.atlas.mongodb.com/api/data-api-resources/#update-multiple-documents)
-- [`api.replaceOne`](https://docs.atlas.mongodb.com/api/data-api-resources/#replace-a-single-document)
-- [`api.deleteOne`](https://docs.atlas.mongodb.com/api/data-api-resources/#delete-a-single-document)
-- [`api.deleteMany`](https://docs.atlas.mongodb.com/api/data-api-resources/#delete-multiple-documents)
-- [`api.aggregate`](https://docs.atlas.mongodb.com/api/data-api-resources/#run-an-aggregation-pipeline)
+- [`API.findOne`](https://www.mongodb.com/docs/atlas/api/data-api-resources/#find-a-single-document)
+- [`API.find`](https://www.mongodb.com/docs/atlas/api/data-api-resources/#find-multiple-documents)
+- [`API.insertOne`](https://www.mongodb.com/docs/atlas/api/data-api-resources/#insert-a-single-document)
+- [`API.insertMany`](https://www.mongodb.com/docs/atlas/api/data-api-resources/#insert-multiple-documents)
+- [`API.updateOne`](https://www.mongodb.com/docs/atlas/api/data-api-resources/#update-a-single-document)
+- [`API.updateMany`](https://www.mongodb.com/docs/atlas/api/data-api-resources/#update-multiple-documents)
+- [`API.replaceOne`](https://www.mongodb.com/docs/atlas/api/data-api-resources/#replace-a-single-document)
+- [`API.deleteOne`](https://www.mongodb.com/docs/atlas/api/data-api-resources/#delete-a-single-document)
+- [`API.deleteMany`](https://www.mongodb.com/docs/atlas/api/data-api-resources/#delete-multiple-documents)
+- [`API.aggregate`](https://www.mongodb.com/docs/atlas/api/data-api-resources/#run-an-aggregation-pipeline)
 
 #### Action examples
 
@@ -159,7 +160,7 @@ api.findOne<C>({
 
 #### Specific Action
 
-You can specific the action request to prevent this package from lagging relative to the official one.
+You can specify the action request to prevent this package from lagging relative to the official one.
 
 ```ts
 api.$$action('findOne', {

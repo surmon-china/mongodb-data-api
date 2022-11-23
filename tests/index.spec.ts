@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { createMongoDBDataAPI, MongoDBDataAPI } from '../src'
 
 test('<type> should be function type', () => {
@@ -18,7 +19,7 @@ test('<type> should be function type', () => {
 })
 
 test('<config> should not be empty params', () => {
-  const logs = []
+  const logs: any[] = []
 
   try {
     new MongoDBDataAPI({ apiKey: null as unknown as string, urlEndpoint: '' })
@@ -36,7 +37,7 @@ test('<config> should not be empty params', () => {
 })
 
 test('<action> should be valid params', async () => {
-  const logs = []
+  const logs: any[] = []
 
   try {
     const api = createMongoDBDataAPI({ apiKey: 'test_key', urlEndpoint: '' })
@@ -46,4 +47,29 @@ test('<action> should be valid params', async () => {
   }
 
   expect(logs.length).toBe(1)
+})
+
+test('<runtime> should be error', async () => {
+  try {
+    const api = createMongoDBDataAPI({
+      apiKey: 'test_api_key',
+      urlEndpoint: 'test_url_endpoint'
+    })
+    await api.$cluster('test').$database('test').$collection('test').find()
+  } catch (error) {
+    expect(axios.isAxiosError(error)).toBeFalsy()
+  }
+})
+
+test('<runtime> should be axios error', async () => {
+  try {
+    const api = createMongoDBDataAPI({
+      apiKey: 'test_api_key',
+      urlEndpoint: 'https://data.mongodb-api.com/app/test_app/endpoint/data/v1'
+    })
+    await api.$cluster('test').$database('test').$collection('test').findOne()
+  } catch (error: any) {
+    expect(error.name).toBe('AxiosError')
+    expect(error.status).toBe(404)
+  }
 })

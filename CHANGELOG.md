@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+### v0.3.0 (2022-11-24)
+
+**Breaking Change**
+
+- Upgrade axios to `1.x` ([Cannot find name 'ProgressEvent'](https://github.com/axios/axios/issues/5297))
+- Upgrade mongodb to `4.12.x`
+- Upgrade [url endpoint to v1](https://www.mongodb.com/docs/atlas/api/data-api-resources/#base-url)
+- Add `cloud` provider config
+- Remove built-in `regions`
+
+**Fix**
+
+- [#6 `error.toJSON` is not a function](https://github.com/surmon-china/mongodb-data-api/issues/6)
+
+**Chore**
+
+- Upgrade deps
+
 ### v0.2.1 (2022-11-19)
 
 **Fix**
