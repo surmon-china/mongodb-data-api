@@ -33,7 +33,7 @@ yarn add mongodb-data-api
 #### Init
 
 ```ts
-import { createMongoDBDataAPI, Region } from 'mongodb-data-api'
+import { createMongoDBDataAPI } from 'mongodb-data-api'
 
 // init by URL Endpoint
 const api = createMongoDBDataAPI({
