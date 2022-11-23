@@ -134,8 +134,6 @@ export class MongoDBDataAPI<InnerDoc = Document> {
       return `${endpoint}/action/${action}`
     }
 
-    const API_KEY_FIELD = 'api-key'
-
     return this.#axios({
       method: 'post',
       data: JSON.stringify(mergedParams),
@@ -148,7 +146,7 @@ export class MongoDBDataAPI<InnerDoc = Document> {
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Request-Headers': '*',
-        [API_KEY_FIELD]: this.#config.apiKey
+        'api-key': this.#config.apiKey
       },
       ...axiosConfig
     })
@@ -157,13 +155,7 @@ export class MongoDBDataAPI<InnerDoc = Document> {
       })
       .catch((error) => {
         // https://www.mongodb.com/docs/atlas/api/data-api-resources/#error-codes
-        if (_axios.isAxiosError(error)) {
-          const errorJSON: any = error.toJSON()
-          errorJSON.config.headers[API_KEY_FIELD] = '*****'
-          return Promise.reject(errorJSON)
-        } else {
-          return Promise.reject(error)
-        }
+        return Promise.reject(_axios.isAxiosError(error) ? error.toJSON() : error)
       })
   }
 

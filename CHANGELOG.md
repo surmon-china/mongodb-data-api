@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+### v0.4.0 (2022-11-24)
+
+**Breaking Change**
+
+- API key desensitization is no longer processed when an error occurs.
+
 ### v0.3.0 (2022-11-24)
 
 **Breaking Change**
