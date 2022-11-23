@@ -8,7 +8,7 @@ All notable changes to this project will be documented in this file.
 
 - Upgrade axios to `1.x` ([Cannot find name 'ProgressEvent'](https://github.com/axios/axios/issues/5297))
 - Upgrade mongodb to `4.12.x`
-- Upgrade [url endpoint to v1](https://www.mongodb.com/docs/atlas/api/data-api-resources/#base-url)
+- Upgrade default url endpoint to [v1](https://www.mongodb.com/docs/atlas/api/data-api-resources/#base-url)
 - Add `cloud` provider config
 - Remove built-in `regions`
 
